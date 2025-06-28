@@ -4,7 +4,7 @@ region      = "ap-northeast-1"
 
 # EKS Cluster Configuration
 cluster_name       = "k8s-experiment-dev"
-kubernetes_version = "1.28"
+kubernetes_version = "1.33"
 
 # VPC Configuration
 vpc_cidr = "10.0.0.0/16"
