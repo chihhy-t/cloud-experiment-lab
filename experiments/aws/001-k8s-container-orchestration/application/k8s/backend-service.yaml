@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: k8s-experiment
+  labels:
+    app: backend
+    tier: api
+    environment: development
+spec:
+  selector:
+    app: backend
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+    protocol: TCP
+  type: ClusterIP
+  sessionAffinity: None

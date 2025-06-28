@@ -1,0 +1,41 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+*.md
+README*
+
+# Docker
+Dockerfile*
+.dockerignore
+docker-compose*.yml
+
+# Kubernetes
+k8s/
+*.yaml
+*.yml
+
+# Development files
+.env*
+.vscode/
+.idea/
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+.tmp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Node.js (if applicable in the future)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

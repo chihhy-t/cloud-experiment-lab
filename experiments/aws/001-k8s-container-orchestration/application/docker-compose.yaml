@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: k8s-experiment/frontend:latest
+    container_name: k8s-experiment-frontend
+    ports:
+      - "8080:80"
+    environment:
+      - SERVICE_NAME=frontend-web
+      - ENVIRONMENT=development
+      - BACKEND_URL=http://backend:80
+    depends_on:
+      - backend
+    networks:
+      - k8s-experiment-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: k8s-experiment/backend:latest
+    container_name: k8s-experiment-backend
+    ports:
+      - "8081:80"
+    environment:
+      - SERVICE_NAME=backend-api
+      - ENVIRONMENT=development
+    networks:
+      - k8s-experiment-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+networks:
+  k8s-experiment-network:
+    driver: bridge
+    name: k8s-experiment-network

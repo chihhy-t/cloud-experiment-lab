@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K8s Container Orchestration Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 K8s Container Orchestration Demo</h1>
+            <p>Amazon EKS を使用したコンテナオーケストレーション実験</p>
+        </header>
+
+        <main>
+            <section class="status-section">
+                <h2>システム状態</h2>
+                <div class="status-grid">
+                    <div class="status-card">
+                        <h3>Frontend Pod</h3>
+                        <div class="status-indicator" id="frontend-status">🟢 Running</div>
+                    </div>
+                    <div class="status-card">
+                        <h3>Backend API</h3>
+                        <div class="status-indicator" id="backend-status">確認中...</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="api-test-section">
+                <h2>API テスト</h2>
+                <div class="api-buttons">
+                    <button onclick="testHealthCheck()">Health Check</button>
+                    <button onclick="testUserAPI()">User API</button>
+                    <button onclick="testMetrics()">Metrics</button>
+                </div>
+                <div class="api-response">
+                    <h3>レスポンス:</h3>
+                    <pre id="api-output">APIボタンをクリックしてテストしてください</pre>
+                </div>
+            </section>
+
+            <section class="info-section">
+                <h2>実験情報</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>アーキテクチャ</h3>
+                        <ul>
+                            <li>Frontend: Nginx + 静的ファイル</li>
+                            <li>Backend: Nginx API シミュレーション</li>
+                            <li>Infrastructure: Amazon EKS</li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h3>テスト項目</h3>
+                        <ul>
+                            <li>コンテナ間通信</li>
+                            <li>Load Balancing</li>
+                            <li>Auto Scaling</li>
+                            <li>Health Check</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Container ID: <span id="container-id">frontend-pod</span></p>
+            <p>Timestamp: <span id="timestamp"></span></p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
